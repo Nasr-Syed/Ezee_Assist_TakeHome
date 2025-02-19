@@ -27,24 +27,23 @@ def scrape_page(url):
             return
         soup = BeautifulSoup(content, "html.parser")
 
-        # Extract text (first 500 characters for preview)
+        # Extract text
         page_text = soup.get_text(separator=" ", strip=True)
         print("Printing page content...")
         print(page_text, "\n")
         # Write text to .txt file
 
+        # Extract image
+
         # Recursively finding URL links inside main URL
         all_urls = soup.find_all("a", href=True)
         for link in all_urls:
-            full_link = urljoin(main_url, link["href"])  # Combining sublinks with main link to consolidate and acquire URL
-
-            # Ensure it's an internal link
+            full_link = urljoin(main_url, link["href"])  # Combining sub-links with main link to acquire URL
+            # Ensure parsing is done under URL domain
             if urlparse(full_link).netloc == urlparse(main_url).netloc:
-                scrape_page(full_link)  # Recursively visit to extract all links from site, only for the domain mineolasearchpartners.com.
+                scrape_page(full_link)  # Recursively visit to extract all links from site.
     except Exception as e:
         print(f"Error scraping {url}: {e}")
-        
-
 
 
 # Start the scraper

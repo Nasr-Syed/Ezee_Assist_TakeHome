@@ -69,13 +69,15 @@ def scrape_page(url):
             # Recursively visit to extract all links from site.
             if urlparse(full_link).netloc == urlparse(main_url).netloc:
                 sublist.append(full_link)
-                scrape_page(full_link)
 
-                # Save summary data
-                summary_data[url] = {
-                    "num_images": len(page_images),
-                    "referenced_urls": sublist
-                }
+        # Save summary data
+        summary_data[url] = {
+            "num_images": len(page_images),
+            "referenced_urls": sublist
+        }
+        # Recurse through internal links
+        for item in sublist:
+            scrape_page(item)
 
     except Exception as e:
         print(f"Error scraping {url}: {e}")

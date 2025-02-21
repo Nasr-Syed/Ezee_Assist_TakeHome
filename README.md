@@ -1,4 +1,4 @@
-#Setup Instructions
+# Setup Instructions
 It is a simple Python script that can recursively parse a website for text and images.
 
 1. In order to run this application successfully, ensure you have a folder that can store images, and a folder that can store text. The python script can be modified to include a clause to create a folder path in case there is not one.
@@ -6,7 +6,7 @@ It is a simple Python script that can recursively parse a website for text and i
 3. Execute main.py
 4. images, text, summary files are stored in the location of the python script folder.
 
-#Steps to run app in cloud environment
+# Steps to run app in cloud environment
 1. AWS Lambda
 2. import boto3
 

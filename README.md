@@ -16,4 +16,5 @@ BUCKET_NAME = "your-s3-bucket"
 def upload_to_s3(file_path, s3_key):
     with open(file_path, "rb") as f:
         s3.upload_fileobj(f, BUCKET_NAME, s3_key)
+
 3. job can be triggered via cronjob.
